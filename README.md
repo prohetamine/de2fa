@@ -32,4 +32,3 @@ docker run -p 3820:3820 app
 ## Access the App
 
 Open your browser and go to: http://localhost:3820# de2fa
-# de2fa
