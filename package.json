@@ -1,0 +1,49 @@
+{
+  "name": "de2fa",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "2fa": "^0.1.2",
+    "@phc/argon2": "^1.0.9",
+    "@prohetamine/redstone": "^0.1.4",
+    "@rooks/use-window-size": "^4.11.2",
+    "@vitejs/plugin-react-swc": "^4.3.0",
+    "argon2": "^0.44.0",
+    "argon2-browser": "^1.18.0",
+    "copy-to-clipboard": "^3.3.3",
+    "framer-motion": "^12.38.0",
+    "otplib": "^13.4.0",
+    "react": "^19.2.4",
+    "react-content-loader": "^7.1.2",
+    "react-dom": "^19.2.4",
+    "react-scroll-horizontal": "^1.6.6",
+    "react-virtualized": "^9.22.6",
+    "sleep-promise": "^9.1.0",
+    "stas-pay": "^0.1.226",
+    "styled-components": "^6.3.12",
+    "use-local-storage": "^3.0.0",
+    "usehooks-ts": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@eslint/js": "^9.39.4",
+    "@rolldown/plugin-babel": "^0.2.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "vite": "^8.0.1",
+    "vite-plugin-wasm": "^3.6.0"
+  }
+}
