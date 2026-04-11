@@ -73,7 +73,7 @@ const App = () => {
   ) || !isConnected
 
   useEffect(() => {
-    if (!password) {
+    if (!password && isConnected) {
       const timeId = setTimeout(async () => {
         if (passwordStorage) {
           setPassword(passwordStorage)
@@ -91,7 +91,7 @@ const App = () => {
 
       return () => clearTimeout(timeId)
     }
-  }, [password])
+  }, [password, isConnected])
 
   useEffect(() => {
     if (isError && password && isDecrypt) {

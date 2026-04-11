@@ -52,7 +52,7 @@ export const ModalWindowProvider = ({ children }) => {
       {
         _window && (
           <ShadowBody>
-            <WhiteContainer style={{ padding: '28px', maxWidth: '334px', width: '100%', boxSizing: 'border-box' }}>
+            <WhiteContainer style={{ padding: '28px', maxWidth: '334px', maxHeight: `calc(100vh - 56px)`, overflow: 'scroll', width: '100%', boxSizing: 'border-box' }}>
               {
                 <Component 
                   onData={_window.onData} 

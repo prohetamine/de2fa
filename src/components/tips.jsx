@@ -45,7 +45,7 @@ const FakeLink = styled(NormalFont500)`
 `
 
 const Tips = () => {
-    const { innerWidth } = useWindowSize()
+    const { innerWidth, innerHeight } = useWindowSize()
         , width = innerWidth > 370 ? 370 : innerWidth
 
     const { isConnected } = Redstone.useApp()
@@ -124,14 +124,20 @@ const Tips = () => {
                         </Flex>
                     )
             }
-            <Flex justify='center' style={{ width: '100%', height: 'calc(100vh - 74px)' }}>
-                <Logo src={mainLogo} alt="" />
-                <Flex direction='row' gap='6px' style={{ flexWrap: 'wrap', maxWidth: '200px', justifyContent: 'center' }}>
-                    <FakeLink onTap={() => window.open('https://prohetamine.ru/web3', '_blank')}>prohetamine.ru/web3</FakeLink>
-                    <FakeLink onTap={() => window.open('https://github.com/prohetamine/de2fa', '_blank')}>GitHub</FakeLink>
-                    <FakeLink onTap={() => window.open('https://github.com/prohetamine/redstone', '_blank')}>Redstone</FakeLink>
-                </Flex>
-            </Flex>
+            {
+                innerHeight > 520 
+                    ? (
+                        <Flex justify='center' style={{ width: '100%', height: 'calc(100vh - 74px)' }}>
+                            <Logo src={mainLogo} alt="" />
+                            <Flex direction='row' gap='6px' style={{ flexWrap: 'wrap', maxWidth: '200px', justifyContent: 'center' }}>
+                                <FakeLink onTap={() => window.open('https://prohetamine.ru/web3', '_blank')}>prohetamine.ru/web3</FakeLink>
+                                <FakeLink onTap={() => window.open('https://github.com/prohetamine/de2fa', '_blank')}>GitHub</FakeLink>
+                                <FakeLink onTap={() => window.open('https://github.com/prohetamine/redstone', '_blank')}>Redstone</FakeLink>
+                            </Flex>
+                        </Flex>
+                    )
+                    : null
+            }
         </Flex>
     )
 }

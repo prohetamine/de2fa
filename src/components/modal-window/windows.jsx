@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/set-state-in-effect */
+import { Scanner } from '@yudiel/react-qr-scanner'
 import styled from 'styled-components'
 import { Flex, Icon, LineHorizontal, NanoFont700, NormalFont500, NormalFont600 } from '../global'
 import { useEffect, useState } from 'react'
@@ -7,6 +8,7 @@ import { motion } from 'framer-motion'
 import { generate } from 'otplib'
 import { useLocalStorage } from 'usehooks-ts'
 import iconUnlock from './../../assets/icon/unlock.svg?react'
+import iconScan from './../../assets/icon/scan.svg?react'
 import iconOk from './../../assets/icon/ok.svg?react'
 import iconArrowDown from './../../assets/icon/arrow-down.svg?react'
 import hashPassword from '../../lib/hash-password'
@@ -15,7 +17,7 @@ const Controll = styled(motion.div)`
     border: 1px solid var(--interface-dark-background-border);
     background: var(--interface-background-primary);
     border-radius: 8px;
-    padding: 12px 16px;
+    padding: 16px 12px;
     width: 100%;
     box-sizing: border-box;
 `
@@ -24,6 +26,7 @@ const Input = styled.input`
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 16px;
+    padding: 0px;
     color: var(--text-gray);
     border: none;
     outline: none;
@@ -378,6 +381,9 @@ export const Create2FaEntry = ({ onData, value }) => {
     const [secretKeyError, setSecretKeyError] = useState(false)
         , [domainError, setDomainError] = useState(false)
 
+    const [isShowQRCode, setShowQRCode] = useState(false)
+        , [isQRCodeDetect, setQRCodeDetect] = useState(false)
+
     useEffect(() => {
         if (secretKey) {
             const timeId = setTimeout(async () => {
@@ -410,105 +416,149 @@ export const Create2FaEntry = ({ onData, value }) => {
         }
     }, [domain])
 
-    return (
-        <Flex gap='12px'>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NormalFont600 style={{ color: 'var(--text-gray)' }}>Create 2FA Entry</NormalFont600>
-                <NormalFont500 style={{ color: 'var(--text-light)' }}>Add a new authentication profile for your account. This will allow you to generate time-based one-time passwords (TOTP) for secure logins.</NormalFont500>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Title*</NanoFont700>
-                <Controll style={{ border: title.length === 0 ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
-                    <Input 
-                        value={title} 
-                        onChange={({ target: { value } }) => {
-                            setTitle(value)
-                        }}
-                        placeholder='Google, OKX, etc...' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Domain</NanoFont700>
-                <Controll style={{ border: domainError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
-                    <Input 
-                        value={domain} 
-                        onChange={({ target: { value } }) => {
-                            setDomain(value)
-                        }}
-                        placeholder='https://google.com' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Account</NanoFont700>
-                <Controll>
-                    <Input 
-                        value={account} 
-                        onChange={({ target: { value } }) => {
-                            setAccount(value)
-                        }}
-                        placeholder='@prohetamine' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Profile</NanoFont700>
-                <Select 
-                    value={profile}
-                    onSelect={profile => setProfile(profile)}
-                    items={value[0]} 
-                />
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Secret Key</NanoFont700>
-                <Controll style={{ border: secretKeyError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
-                    <Input 
-                        value={secretKey} 
-                        onChange={({ target: { value } }) => {
-                            setSecretKey(value)
-                        }}
-                        placeholder='ABCDEFFHIJKLMNOFQRSTUVWXYZ234567' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='12px' direction='row' justify='flex-end' style={{ width: '100%' }}>
-                <Button
-                    onTap={async () => {
-                        if (title.length === 0) {
-                            return
-                        }
+    return isShowQRCode 
+                ? (
+                    <Flex gap='12px'>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NormalFont600 style={{ color: 'var(--text-gray)' }}>QR-Code</NormalFont600>
+                            <NormalFont500 style={{ color: 'var(--text-light)' }}>Point the camera at the QR code</NormalFont500>
+                        </Flex>
+                        <Controll style={{ padding: '0px', overflow: 'hidden', border: isQRCodeDetect ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                            <Scanner
+                                onScan={detectedCodes => {
+                                    detectedCodes.forEach(code => setSecretKey(code.rawValue))
+                                    setShowQRCode(false)
+                                }}
+                                onError={(error) => console.log(error?.message)}
+                                sound={false}
+                                components={{
+                                    finder: false,
+                                    tracker: detectedCodes => {
+                                        setQRCodeDetect(detectedCodes.length > 0)
+                                    }
+                                }}
+                            />
+                        </Controll>
+                        <Flex gap='12px' direction='row' justify='flex-end' style={{ width: '100%' }}>
+                            <Button
+                                onTap={() => setShowQRCode(false)}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Cancel</NormalFont600>
+                            </Button>
+                        </Flex>
+                    </Flex>
+                )
+                : (
+                    <Flex gap='12px'>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NormalFont600 style={{ color: 'var(--text-gray)' }}>Create 2FA Entry</NormalFont600>
+                            <NormalFont500 style={{ color: 'var(--text-light)' }}>Add a new authentication profile for your account. This will allow you to generate time-based one-time passwords (TOTP) for secure logins.</NormalFont500>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Title*</NanoFont700>
+                            <Controll style={{ border: title.length === 0 ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                                <Input 
+                                    value={title} 
+                                    onChange={({ target: { value } }) => {
+                                        setTitle(value)
+                                    }}
+                                    placeholder='Google, OKX, etc...' 
+                                />
+                            </Controll>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Domain</NanoFont700>
+                            <Controll style={{ border: domainError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                                <Input 
+                                    value={domain} 
+                                    onChange={({ target: { value } }) => {
+                                        setDomain(value)
+                                    }}
+                                    placeholder='https://google.com' 
+                                />
+                            </Controll>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Account</NanoFont700>
+                            <Controll>
+                                <Input 
+                                    value={account} 
+                                    onChange={({ target: { value } }) => {
+                                        setAccount(value)
+                                    }}
+                                    placeholder='@prohetamine' 
+                                />
+                            </Controll>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Profile</NanoFont700>
+                            <Select 
+                                value={profile}
+                                onSelect={profile => setProfile(profile)}
+                                items={value[0]} 
+                            />
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Secret Key</NanoFont700>
+                            <Flex direction='row' gap='6px'>
+                                <Controll style={{ border: secretKeyError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                                    <Input 
+                                        value={secretKey} 
+                                        onChange={({ target: { value } }) => {
+                                            setSecretKey(value)
+                                        }}
+                                        placeholder='ABCDEFFHIJKLMNOFQRSTUVWXYZ234567' 
+                                    />
+                                </Controll>
+                                <Button
+                                    style={{ height: '48px', boxSizing: 'border-box' }}
+                                    onTap={() => setShowQRCode(true)}
+                                    whileTap={{ scale: 0.9 }}
+                                >
+                                    <Flex direction='row' gap='6px'>
+                                        <Icon src={iconScan} />
+                                    </Flex>
+                                </Button>
+                            </Flex>
+                        </Flex>
+                        <Flex gap='12px' direction='row' justify='flex-end' style={{ width: '100%' }}>
+                            <Button
+                                onTap={async () => {
+                                    if (title.length === 0) {
+                                        return
+                                    }
 
-                        try {
-                            await generate({ secret: secretKey })
-                        } catch (e) {
-                            setSecretKeyError(true)
-                            return
-                        }
+                                    try {
+                                        await generate({ secret: secretKey })
+                                    } catch (e) {
+                                        setSecretKeyError(true)
+                                        return
+                                    }
 
-                        if (domainError) {
-                            return
-                        }
+                                    if (domainError) {
+                                        return
+                                    }
 
-                        const _domain = domainError || domain.length === 0
-                                            ? ''
-                                            : (new URL(domain)).host
+                                    const _domain = domainError || domain.length === 0
+                                                        ? ''
+                                                        : (new URL(domain)).host
 
-                        onData(true, profile, title, _domain, account, secretKey)
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Save</NormalFont600>
-                </Button>
-                <Button
-                    onTap={() => onData(false)}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Cancel</NormalFont600>
-                </Button>
-            </Flex>
-        </Flex>
-    )
+                                    onData(true, profile, title, _domain, account, secretKey)
+                                }}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Save</NormalFont600>
+                            </Button>
+                            <Button
+                                onTap={() => onData(false)}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Cancel</NormalFont600>
+                            </Button>
+                        </Flex>
+                    </Flex>
+                )
 }
 
 export const Edit2FaEntry = ({ onData, value }) => {
@@ -521,6 +571,9 @@ export const Edit2FaEntry = ({ onData, value }) => {
     const [secretKeyError, setSecretKeyError] = useState(false)
         , [domainError, setDomainError] = useState(false)
 
+    const [isShowQRCode, setShowQRCode] = useState(false)
+        , [isQRCodeDetect, setQRCodeDetect] = useState(false)
+
     useEffect(() => {
         if (secretKey) {
             const timeId = setTimeout(async () => {
@@ -553,103 +606,147 @@ export const Edit2FaEntry = ({ onData, value }) => {
         }
     }, [domain])
 
-    return (
-        <Flex gap='12px'>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NormalFont600 style={{ color: 'var(--text-gray)' }}>Edit 2FA Entry</NormalFont600>
-                <NormalFont500 style={{ color: 'var(--text-light)' }}>Update your two-factor authentication profile to continue generating time-based one-time passwords (TOTP) for secure logins.</NormalFont500>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Title*</NanoFont700>
-                <Controll style={{ border: title.length === 0 ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
-                    <Input 
-                        value={title} 
-                        onChange={({ target: { value } }) => {
-                            setTitle(value)
-                        }}
-                        placeholder='Google, OKX, etc...' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Domain</NanoFont700>
-                <Controll style={{ border: domainError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
-                    <Input 
-                        value={domain} 
-                        onChange={({ target: { value } }) => {
-                            setDomain(value)
-                        }}
-                        placeholder='https://google.com' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Account</NanoFont700>
-                <Controll>
-                    <Input 
-                        value={account} 
-                        onChange={({ target: { value } }) => {
-                            setAccount(value)
-                        }}
-                        placeholder='@prohetamine' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Account</NanoFont700>
-                <Select 
-                    value={profile}
-                    onSelect={profile => setProfile(profile)}
-                    items={value[0]} 
-                />
-            </Flex>
-            <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
-                <NanoFont700 style={{ color: 'var(--text-light)' }}>Secret Key</NanoFont700>
-                <Controll style={{ border: secretKeyError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
-                    <Input 
-                        value={secretKey} 
-                        onChange={({ target: { value } }) => {
-                            setSecretKey(value)
-                        }}
-                        placeholder='ABCDEFFHIJKLMNOFQRSTUVWXYZ234567' 
-                    />
-                </Controll>
-            </Flex>
-            <Flex gap='12px' direction='row' justify='flex-end' style={{ width: '100%' }}>
-                <Button
-                    onTap={async () => {
-                        if (title.length === 0) {
-                            return
-                        }
+    return isShowQRCode 
+                ? (
+                    <Flex gap='12px'>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NormalFont600 style={{ color: 'var(--text-gray)' }}>QR-Code</NormalFont600>
+                            <NormalFont500 style={{ color: 'var(--text-light)' }}>Point the camera at the QR code</NormalFont500>
+                        </Flex>
+                        <Controll style={{ padding: '0px', overflow: 'hidden', border: isQRCodeDetect ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                            <Scanner
+                                onScan={detectedCodes => {
+                                    detectedCodes.forEach(code => setSecretKey(code.rawValue))
+                                    setShowQRCode(false)
+                                }}
+                                onError={(error) => console.log(error?.message)}
+                                sound={false}
+                                components={{
+                                    finder: false,
+                                    tracker: detectedCodes => {
+                                        setQRCodeDetect(detectedCodes.length > 0)
+                                    }
+                                }}
+                            />
+                        </Controll>
+                        <Flex gap='12px' direction='row' justify='flex-end' style={{ width: '100%' }}>
+                            <Button
+                                onTap={() => setShowQRCode(false)}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Cancel</NormalFont600>
+                            </Button>
+                        </Flex>
+                    </Flex>
+                )
+                : (
+                    <Flex gap='12px'>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NormalFont600 style={{ color: 'var(--text-gray)' }}>Edit 2FA Entry</NormalFont600>
+                            <NormalFont500 style={{ color: 'var(--text-light)' }}>Update your two-factor authentication profile to continue generating time-based one-time passwords (TOTP) for secure logins.</NormalFont500>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Title*</NanoFont700>
+                            <Controll style={{ border: title.length === 0 ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                                <Input 
+                                    value={title} 
+                                    onChange={({ target: { value } }) => {
+                                        setTitle(value)
+                                    }}
+                                    placeholder='Google, OKX, etc...' 
+                                />
+                            </Controll>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Domain</NanoFont700>
+                            <Controll style={{ border: domainError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                                <Input 
+                                    value={domain} 
+                                    onChange={({ target: { value } }) => {
+                                        setDomain(value)
+                                    }}
+                                    placeholder='https://google.com' 
+                                />
+                            </Controll>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Account</NanoFont700>
+                            <Controll>
+                                <Input 
+                                    value={account} 
+                                    onChange={({ target: { value } }) => {
+                                        setAccount(value)
+                                    }}
+                                    placeholder='@prohetamine' 
+                                />
+                            </Controll>
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Account</NanoFont700>
+                            <Select 
+                                value={profile}
+                                onSelect={profile => setProfile(profile)}
+                                items={value[0]} 
+                            />
+                        </Flex>
+                        <Flex gap='6px' style={{ alignItems: 'flex-start', width: '100%' }}>
+                            <NanoFont700 style={{ color: 'var(--text-light)' }}>Secret Key</NanoFont700>
+                            <Flex direction='row' gap='6px'>
+                                <Controll style={{ border: secretKeyError ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
+                                    <Input 
+                                        value={secretKey} 
+                                        onChange={({ target: { value } }) => {
+                                            setSecretKey(value)
+                                        }}
+                                        placeholder='ABCDEFFHIJKLMNOFQRSTUVWXYZ234567' 
+                                    />
+                                </Controll>
+                                <Button
+                                    style={{ height: '48px', boxSizing: 'border-box' }}
+                                    onTap={() => setShowQRCode(true)}
+                                    whileTap={{ scale: 0.9 }}
+                                >
+                                    <Flex direction='row' gap='6px'>
+                                        <Icon src={iconScan} />
+                                    </Flex>
+                                </Button>
+                            </Flex>
+                        </Flex>
+                        <Flex gap='12px' direction='row' justify='flex-end' style={{ width: '100%' }}>
+                            <Button
+                                onTap={async () => {
+                                    if (title.length === 0) {
+                                        return
+                                    }
 
-                        try {
-                            await generate({ secret: secretKey })
-                        } catch (e) {
-                            setSecretKeyError(true)
-                            return
-                        }
+                                    try {
+                                        await generate({ secret: secretKey })
+                                    } catch (e) {
+                                        setSecretKeyError(true)
+                                        return
+                                    }
 
-                        if (domainError) {
-                            return
-                        }
+                                    if (domainError) {
+                                        return
+                                    }
 
-                        const _domain = domainError || domain.length === 0
-                                            ? ''
-                                            : (new URL(domain)).host
+                                    const _domain = domainError || domain.length === 0
+                                                        ? ''
+                                                        : (new URL(domain)).host
 
-                        onData(true, profile, title, _domain, account, secretKey)
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Save</NormalFont600>
-                </Button>
-                <Button
-                    onTap={() => onData(false)}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Cancel</NormalFont600>
-                </Button>
-            </Flex>
-        </Flex>
-    )
+                                    onData(true, profile, title, _domain, account, secretKey)
+                                }}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Save</NormalFont600>
+                            </Button>
+                            <Button
+                                onTap={() => onData(false)}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <NormalFont600 style={{ color: 'var(--interface-color-primary)' }}>Cancel</NormalFont600>
+                            </Button>
+                        </Flex>
+                    </Flex>
+                )
 }
