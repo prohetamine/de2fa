@@ -672,11 +672,11 @@ export const Edit2FaEntry = ({ onData, value }) => {
                                             label
                                         } = data
 
-                                        if (issuer) {
+                                        if (issuer && title.length === 0) {
                                             setTitle(issuer)
                                         }
 
-                                        if (label) {
+                                        if (label && account.length === 0) {
                                             setAccount(label)
                                         }
 
