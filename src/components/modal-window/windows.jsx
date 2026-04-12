@@ -426,8 +426,19 @@ export const Create2FaEntry = ({ onData, value }) => {
                         <Controll style={{ padding: '0px', overflow: 'hidden', border: isQRCodeDetect ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
                             <Scanner
                                 onScan={detectedCodes => {
-                                    detectedCodes.forEach(code => setSecretKey(code.rawValue))
-                                    setShowQRCode(false)
+                                    const [secret = false] = detectedCodes.map(code => {
+                                        try {
+                                            const url = new URL(code.rawValue)
+                                            return url.searchParams.get('secret')
+                                        } catch (e) {
+                                            return false
+                                        }
+                                    }).filter(f => f)
+
+                                    if (secret) {
+                                        setSecretKey(secret)
+                                        setShowQRCode(false)
+                                    }
                                 }}
                                 onError={(error) => console.log(error?.message)}
                                 sound={false}
@@ -616,8 +627,19 @@ export const Edit2FaEntry = ({ onData, value }) => {
                         <Controll style={{ padding: '0px', overflow: 'hidden', border: isQRCodeDetect ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
                             <Scanner
                                 onScan={detectedCodes => {
-                                    detectedCodes.forEach(code => setSecretKey(code.rawValue))
-                                    setShowQRCode(false)
+                                    const [secret = false] = detectedCodes.map(code => {
+                                        try {
+                                            const url = new URL(code.rawValue)
+                                            return url.searchParams.get('secret')
+                                        } catch (e) {
+                                            return false
+                                        }
+                                    }).filter(f => f)
+
+                                    if (secret) {
+                                        setSecretKey(secret)
+                                        setShowQRCode(false)
+                                    }
                                 }}
                                 onError={(error) => console.log(error?.message)}
                                 sound={false}
