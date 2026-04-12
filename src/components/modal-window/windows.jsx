@@ -6,6 +6,7 @@ import { Flex, Icon, LineHorizontal, NanoFont700, NormalFont500, NormalFont600 }
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { generate } from 'otplib'
+import * as OTPAuth from 'otpauth'
 import { useLocalStorage } from 'usehooks-ts'
 import iconUnlock from './../../assets/icon/unlock.svg?react'
 import iconScan from './../../assets/icon/scan.svg?react'
@@ -426,16 +427,37 @@ export const Create2FaEntry = ({ onData, value }) => {
                         <Controll style={{ padding: '0px', overflow: 'hidden', border: isQRCodeDetect ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
                             <Scanner
                                 onScan={detectedCodes => {
-                                    const [secret = false] = detectedCodes.map(code => {
+                                    const [data = false] = detectedCodes.map(code => {
                                         try {
-                                            const url = new URL(code.rawValue)
-                                            return url.searchParams.get('secret')
+                                            const { issuer = '', label = '' } = OTPAuth.URI.parse(`otpauth://totp/Reddit:Adventurous_Dot1008?issuer=Reddit&secret=NH4TZSFEMC3JH7FM6VLJSUO6COATK5KB`)
+                                                , url = new URL(code.rawValue)
+                                                , secret = url.searchParams.get('secret')
+                                            
+                                            return {
+                                                secret,
+                                                issuer, 
+                                                label
+                                            }
                                         } catch (e) {
                                             return false
                                         }
                                     }).filter(f => f)
 
-                                    if (secret) {
+                                    if (data) {
+                                        const { 
+                                            secret,
+                                            issuer, 
+                                            label
+                                        } = data
+
+                                        if (issuer) {
+                                            setTitle(issuer)
+                                        }
+
+                                        if (label) {
+                                            setAccount(label)
+                                        }
+
                                         setSecretKey(secret)
                                         setShowQRCode(false)
                                     }
@@ -627,16 +649,37 @@ export const Edit2FaEntry = ({ onData, value }) => {
                         <Controll style={{ padding: '0px', overflow: 'hidden', border: isQRCodeDetect ? `1px solid var(--interface-color-primary-alt)` : `1px solid var(--interface-dark-background-border)` }}>
                             <Scanner
                                 onScan={detectedCodes => {
-                                    const [secret = false] = detectedCodes.map(code => {
+                                    const [data = false] = detectedCodes.map(code => {
                                         try {
-                                            const url = new URL(code.rawValue)
-                                            return url.searchParams.get('secret')
+                                            const { issuer = '', label = '' } = OTPAuth.URI.parse(`otpauth://totp/Reddit:Adventurous_Dot1008?issuer=Reddit&secret=NH4TZSFEMC3JH7FM6VLJSUO6COATK5KB`)
+                                                , url = new URL(code.rawValue)
+                                                , secret = url.searchParams.get('secret')
+                                            
+                                            return {
+                                                secret,
+                                                issuer, 
+                                                label
+                                            }
                                         } catch (e) {
                                             return false
                                         }
                                     }).filter(f => f)
 
-                                    if (secret) {
+                                    if (data) {
+                                        const { 
+                                            secret,
+                                            issuer, 
+                                            label
+                                        } = data
+
+                                        if (issuer) {
+                                            setTitle(issuer)
+                                        }
+
+                                        if (label) {
+                                            setAccount(label)
+                                        }
+
                                         setSecretKey(secret)
                                         setShowQRCode(false)
                                     }
