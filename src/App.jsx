@@ -39,6 +39,15 @@ const App = () => {
       , cert = Redstone.useCertificate(`slots-count`, { load: isConnected, paymentAddress: '0xbcfA1b80C39F9a378b12b257934BE409Bc93eC60' })
       , confirm = useStasPay()
 
+  /*window.cert = async () => {
+    const commission = await cert.getCommission()
+        , isConfirm = await confirm(commission)
+    
+    if (isConfirm) {
+      await cert.updateValue(100)
+    }
+  }*/
+
   const [passwordStorage, setPasswordStorage] = useLocalStorage('pwd', '')
       , [isLogoutWithReload] = useLocalStorage('lwr', true)    
       , [password, setPassword] = useState(null)
