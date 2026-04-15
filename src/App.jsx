@@ -29,8 +29,14 @@ const App = () => {
   const { isConnected } = Redstone.useApp()
       , profilesList = Redstone.useList('profiles', { self: true, watch: false, load: isConnected })
       , slotsList = Redstone.useList('slot', { self: true, watch: false, load: isConnected })
-      , slotsCount = Redstone.useCounter('slots-count', { self: true, watch: false, load: isConnected, stas: true })
-      , cert = Redstone.useCertificate(`slots-count`, { load: isConnected })
+      , slotsCount = Redstone.useCounter('slots-count', { 
+          self: true, 
+          watch: false, 
+          load: isConnected, 
+          stas: true,
+          paymentAddress: '0xbcfA1b80C39F9a378b12b257934BE409Bc93eC60'
+        })
+      , cert = Redstone.useCertificate(`slots-count`, { load: isConnected, paymentAddress: '0xbcfA1b80C39F9a378b12b257934BE409Bc93eC60' })
       , confirm = useStasPay()
 
   const [passwordStorage, setPasswordStorage] = useLocalStorage('pwd', '')
