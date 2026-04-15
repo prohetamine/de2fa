@@ -1,4 +1,4 @@
-import{Hn as e,Nn as t,Xr as n,_i as r,_t as i,or as a,qn as o}from"./index-C-5JgYRI.js";var s=o`
+import{Fn as e,Wn as t,Xn as n,cr as r,gi as i,ht as a,zt as o}from"./index-C7o_W2ia.js";var s=n`
   button {
     display: block;
     display: flex;
@@ -121,18 +121,18 @@ import{Hn as e,Nn as t,Xr as n,_i as r,_t as i,or as a,qn as o}from"./index-C-5J
     background-color: ${({tokens:e})=>e.theme.foregroundSecondary};
     opacity: 0.5;
   }
-`,c=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},l={lg:`lg-regular`,md:`lg-regular`,sm:`md-regular`},u={lg:`lg`,md:`md`,sm:`sm`},d=class extends a{constructor(){super(...arguments),this.size=`md`,this.disabled=!1,this.text=``,this.loading=!1}render(){return this.loading?e` <wui-flex alignItems="center" gap="01" padding="01">
+`,c=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},l={lg:`lg-regular`,md:`lg-regular`,sm:`md-regular`},u={lg:`lg`,md:`md`,sm:`sm`},d=class extends r{constructor(){super(...arguments),this.size=`md`,this.disabled=!1,this.text=``,this.loading=!1}render(){return this.loading?t` <wui-flex alignItems="center" gap="01" padding="01">
         <wui-shimmer width="20px" height="20px"></wui-shimmer>
         <wui-shimmer width="32px" height="18px" borderRadius="4xs"></wui-shimmer>
-      </wui-flex>`:e`
+      </wui-flex>`:t`
       <button ?disabled=${this.disabled} data-size=${this.size}>
         ${this.imageTemplate()} ${this.textTemplate()}
       </button>
-    `}imageTemplate(){return this.imageSrc&&this.chainImageSrc?e`<wui-flex class="left-image-container">
+    `}imageTemplate(){return this.imageSrc&&this.chainImageSrc?t`<wui-flex class="left-image-container">
         <wui-image src=${this.imageSrc} class="token-image"></wui-image>
         <wui-image src=${this.chainImageSrc} class="chain-image"></wui-image>
-      </wui-flex>`:this.imageSrc?e`<wui-image src=${this.imageSrc} class="token-image"></wui-image>`:e`<wui-flex class="left-icon-container">
+      </wui-flex>`:this.imageSrc?t`<wui-image src=${this.imageSrc} class="token-image"></wui-image>`:t`<wui-flex class="left-icon-container">
       <wui-icon size=${u[this.size]} name="networkPlaceholder"></wui-icon>
-    </wui-flex>`}textTemplate(){return e`<wui-text color="primary" variant=${l[this.size]}
+    </wui-flex>`}textTemplate(){return t`<wui-text color="primary" variant=${l[this.size]}
       >${this.text}</wui-text
-    >`}};d.styles=[t,i,s],c([n()],d.prototype,`size`,void 0),c([n()],d.prototype,`imageSrc`,void 0),c([n()],d.prototype,`chainImageSrc`,void 0),c([n({type:Boolean})],d.prototype,`disabled`,void 0),c([n()],d.prototype,`text`,void 0),c([n({type:Boolean})],d.prototype,`loading`,void 0),d=c([r(`wui-token-button`)],d);
+    >`}};d.styles=[e,a,s],c([o()],d.prototype,`size`,void 0),c([o()],d.prototype,`imageSrc`,void 0),c([o()],d.prototype,`chainImageSrc`,void 0),c([o({type:Boolean})],d.prototype,`disabled`,void 0),c([o()],d.prototype,`text`,void 0),c([o({type:Boolean})],d.prototype,`loading`,void 0),d=c([i(`wui-token-button`)],d);

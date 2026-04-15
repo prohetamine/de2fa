@@ -1,4 +1,4 @@
-import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_t as l,aa as u,cr as d,gn as f,h as p,nt as m,or as h,qn as g,qr as _}from"./index-C-5JgYRI.js";var v=g`
+import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,ei as l,et as u,gi as d,h as f,hn as p,ht as m,ia as h,lr as g,zt as _}from"./index-C7o_W2ia.js";var v=s`
   button {
     width: 100%;
     display: flex;
@@ -59,7 +59,7 @@ import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_
     border-radius: ${({borderRadius:e})=>e[4]};
     box-shadow: inset 0 0 0 1px ${({tokens:e})=>e.core.glass010};
   }
-`,y=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},b=class extends h{constructor(){super(...arguments),this.networkImages=[``],this.text=``}render(){return e`
+`,y=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},b=class extends c{constructor(){super(...arguments),this.networkImages=[``],this.text=``}render(){return o`
       <button>
         <wui-text variant="md-regular" color="inherit">${this.text}</wui-text>
         <wui-flex>
@@ -67,9 +67,9 @@ import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_
           <wui-icon name="chevronRight" size="sm" color="inherit"></wui-icon>
         </wui-flex>
       </button>
-    `}networksTemplate(){return e` <wui-flex class="networks">
-      ${this.networkImages.slice(0,5)?.map(t=>e` <wui-flex class="network-icon"> <wui-image src=${t}></wui-image> </wui-flex>`)}
-    </wui-flex>`}};b.styles=[n,l,v],y([o({type:Array})],b.prototype,`networkImages`,void 0),y([o()],b.prototype,`text`,void 0),b=y([s(`wui-compatible-network`)],b);var x=g`
+    `}networksTemplate(){return o` <wui-flex class="networks">
+      ${this.networkImages.slice(0,5)?.map(e=>o` <wui-flex class="network-icon"> <wui-image src=${e}></wui-image> </wui-flex>`)}
+    </wui-flex>`}};b.styles=[t,m,v],y([_({type:Array})],b.prototype,`networkImages`,void 0),y([_()],b.prototype,`text`,void 0),b=y([d(`wui-compatible-network`)],b);var x=s`
   wui-compatible-network {
     margin-top: ${({spacing:e})=>e[4]};
     width: 100%;
@@ -83,7 +83,7 @@ import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_
   wui-icon {
     align-items: normal;
   }
-`,S=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},C=class extends h{constructor(){super(),this.unsubscribe=[],this.address=p.getAccountData()?.address,this.profileName=p.getAccountData()?.profileName,this.network=p.state.activeCaipNetwork,this.unsubscribe.push(p.subscribeChainProp(`accountState`,e=>{e?(this.address=e.address,this.profileName=e.profileName):d.showError(`Account not found`)}),p.subscribeKey(`activeCaipNetwork`,e=>{e!=null&&e.id&&(this.network=e)}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e())}render(){if(!this.address)throw Error(`w3m-wallet-receive-view: No account provided`);let t=i.getNetworkImage(this.network);return e` <wui-flex
+`,S=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},C=class extends c{constructor(){super(),this.unsubscribe=[],this.address=f.getAccountData()?.address,this.profileName=f.getAccountData()?.profileName,this.network=f.state.activeCaipNetwork,this.unsubscribe.push(f.subscribeChainProp(`accountState`,e=>{e?(this.address=e.address,this.profileName=e.profileName):l.showError(`Account not found`)}),f.subscribeKey(`activeCaipNetwork`,e=>{e!=null&&e.id&&(this.network=e)}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e())}render(){if(!this.address)throw Error(`w3m-wallet-receive-view: No account provided`);let e=r.getNetworkImage(this.network);return o` <wui-flex
       flexDirection="column"
       .padding=${[`0`,`4`,`4`,`4`]}
       alignItems="center"
@@ -94,7 +94,7 @@ import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_
         text=${a.getTruncateString({string:this.profileName||this.address||``,charsStart:this.profileName?18:4,charsEnd:this.profileName?0:4,truncate:this.profileName?`end`:`middle`})}
         icon="copy"
         size="sm"
-        imageSrc=${t||``}
+        imageSrc=${e||``}
         variant="gray"
       ></wui-chip-button>
       <wui-flex
@@ -105,10 +105,10 @@ import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_
       >
         <wui-qr-code
           size=${232}
-          theme=${_.state.themeMode}
+          theme=${i.state.themeMode}
           uri=${this.address}
           ?arenaClear=${!0}
-          color=${u(_.state.themeVariables[`--apkt-qr-color`]??_.state.themeVariables[`--w3m-qr-color`])}
+          color=${h(i.state.themeVariables[`--apkt-qr-color`]??i.state.themeVariables[`--w3m-qr-color`])}
           data-testid="wui-qr-code"
         ></wui-qr-code>
         <wui-text variant="lg-regular" color="primary" align="center">
@@ -120,12 +120,12 @@ import{Hn as e,In as t,Nn as n,Qn as r,Rt as i,Vn as a,Xr as o,_i as s,_r as c,_
         </wui-button>
       </wui-flex>
       ${this.networkTemplate()}
-    </wui-flex>`}networkTemplate(){let t=p.getAllRequestedCaipNetworks(),n=p.checkIfSmartAccountEnabled(),a=p.state.activeCaipNetwork,o=t.filter(e=>e?.chainNamespace===a?.chainNamespace);if(r(a?.chainNamespace)===f.ACCOUNT_TYPES.SMART_ACCOUNT&&n)return a?e`<wui-compatible-network
+    </wui-flex>`}networkTemplate(){let e=f.getAllRequestedCaipNetworks(),t=f.checkIfSmartAccountEnabled(),n=f.state.activeCaipNetwork,i=e.filter(e=>e?.chainNamespace===n?.chainNamespace);if(g(n?.chainNamespace)===p.ACCOUNT_TYPES.SMART_ACCOUNT&&t)return n?o`<wui-compatible-network
         @click=${this.onReceiveClick.bind(this)}
         text="Only receive assets on this network"
-        .networkImages=${[i.getNetworkImage(a)??``]}
-      ></wui-compatible-network>`:null;let s=((o?.filter(e=>e?.assets?.imageId))?.slice(0,5)).map(i.getNetworkImage).filter(Boolean);return e`<wui-compatible-network
+        .networkImages=${[r.getNetworkImage(n)??``]}
+      ></wui-compatible-network>`:null;let a=((i?.filter(e=>e?.assets?.imageId))?.slice(0,5)).map(r.getNetworkImage).filter(Boolean);return o`<wui-compatible-network
       @click=${this.onReceiveClick.bind(this)}
       text="Only receive assets on these networks"
-      .networkImages=${s}
-    ></wui-compatible-network>`}onReceiveClick(){t.push(`WalletCompatibleNetworks`)}onCopyClick(){try{this.address&&(c.copyToClopboard(this.address),d.showSuccess(`Address copied`))}catch{d.showError(`Failed to copy`)}}};C.styles=x,S([m()],C.prototype,`address`,void 0),S([m()],C.prototype,`profileName`,void 0),S([m()],C.prototype,`network`,void 0),C=S([s(`w3m-wallet-receive-view`)],C);export{C as W3mWalletReceiveView};
+      .networkImages=${a}
+    ></wui-compatible-network>`}onReceiveClick(){n.push(`WalletCompatibleNetworks`)}onCopyClick(){try{this.address&&(e.copyToClopboard(this.address),l.showSuccess(`Address copied`))}catch{l.showError(`Failed to copy`)}}};C.styles=x,S([u()],C.prototype,`address`,void 0),S([u()],C.prototype,`profileName`,void 0),S([u()],C.prototype,`network`,void 0),C=S([d(`w3m-wallet-receive-view`)],C);export{C as W3mWalletReceiveView};
