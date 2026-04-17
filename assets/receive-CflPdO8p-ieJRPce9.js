@@ -1,4 +1,4 @@
-import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,ei as l,et as u,gi as d,h as f,hn as p,ht as m,ia as h,lr as g,zt as _}from"./index-CrYs1sPZ.js";var v=s`
+import{$ as e,An as t,Ft as n,Hn as r,Si as i,Xn as a,Zn as o,_ as s,ei as c,fr as l,hn as u,ht as d,mr as f,or as p,qn as m,ri as h,rt as g,tr as _}from"./index-D20wyhr-.js";var v=e`
   button {
     width: 100%;
     display: flex;
@@ -59,7 +59,7 @@ import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,e
     border-radius: ${({borderRadius:e})=>e[4]};
     box-shadow: inset 0 0 0 1px ${({tokens:e})=>e.core.glass010};
   }
-`,y=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},b=class extends c{constructor(){super(...arguments),this.networkImages=[``],this.text=``}render(){return o`
+`,y=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},b=class extends l{constructor(){super(...arguments),this.networkImages=[``],this.text=``}render(){return o`
       <button>
         <wui-text variant="md-regular" color="inherit">${this.text}</wui-text>
         <wui-flex>
@@ -69,7 +69,7 @@ import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,e
       </button>
     `}networksTemplate(){return o` <wui-flex class="networks">
       ${this.networkImages.slice(0,5)?.map(e=>o` <wui-flex class="network-icon"> <wui-image src=${e}></wui-image> </wui-flex>`)}
-    </wui-flex>`}};b.styles=[t,m,v],y([_({type:Array})],b.prototype,`networkImages`,void 0),y([_()],b.prototype,`text`,void 0),b=y([d(`wui-compatible-network`)],b);var x=s`
+    </wui-flex>`}};b.styles=[m,d,v],y([h({type:Array})],b.prototype,`networkImages`,void 0),y([h()],b.prototype,`text`,void 0),b=y([i(`wui-compatible-network`)],b);var x=e`
   wui-compatible-network {
     margin-top: ${({spacing:e})=>e[4]};
     width: 100%;
@@ -83,7 +83,7 @@ import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,e
   wui-icon {
     align-items: normal;
   }
-`,S=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},C=class extends c{constructor(){super(),this.unsubscribe=[],this.address=f.getAccountData()?.address,this.profileName=f.getAccountData()?.profileName,this.network=f.state.activeCaipNetwork,this.unsubscribe.push(f.subscribeChainProp(`accountState`,e=>{e?(this.address=e.address,this.profileName=e.profileName):l.showError(`Account not found`)}),f.subscribeKey(`activeCaipNetwork`,e=>{e!=null&&e.id&&(this.network=e)}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e())}render(){if(!this.address)throw Error(`w3m-wallet-receive-view: No account provided`);let e=r.getNetworkImage(this.network);return o` <wui-flex
+`,S=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},C=class extends l{constructor(){super(),this.unsubscribe=[],this.address=s.getAccountData()?.address,this.profileName=s.getAccountData()?.profileName,this.network=s.state.activeCaipNetwork,this.unsubscribe.push(s.subscribeChainProp(`accountState`,e=>{e?(this.address=e.address,this.profileName=e.profileName):f.showError(`Account not found`)}),s.subscribeKey(`activeCaipNetwork`,e=>{e!=null&&e.id&&(this.network=e)}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e())}render(){if(!this.address)throw Error(`w3m-wallet-receive-view: No account provided`);let e=n.getNetworkImage(this.network);return o` <wui-flex
       flexDirection="column"
       .padding=${[`0`,`4`,`4`,`4`]}
       alignItems="center"
@@ -105,10 +105,10 @@ import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,e
       >
         <wui-qr-code
           size=${232}
-          theme=${i.state.themeMode}
+          theme=${c.state.themeMode}
           uri=${this.address}
           ?arenaClear=${!0}
-          color=${h(i.state.themeVariables[`--apkt-qr-color`]??i.state.themeVariables[`--w3m-qr-color`])}
+          color=${p(c.state.themeVariables[`--apkt-qr-color`]??c.state.themeVariables[`--w3m-qr-color`])}
           data-testid="wui-qr-code"
         ></wui-qr-code>
         <wui-text variant="lg-regular" color="primary" align="center">
@@ -120,12 +120,12 @@ import{Dn as e,Fn as t,Rn as n,Rt as r,Tn as i,Un as a,Wn as o,Xn as s,cr as c,e
         </wui-button>
       </wui-flex>
       ${this.networkTemplate()}
-    </wui-flex>`}networkTemplate(){let e=f.getAllRequestedCaipNetworks(),t=f.checkIfSmartAccountEnabled(),n=f.state.activeCaipNetwork,i=e.filter(e=>e?.chainNamespace===n?.chainNamespace);if(g(n?.chainNamespace)===p.ACCOUNT_TYPES.SMART_ACCOUNT&&t)return n?o`<wui-compatible-network
+    </wui-flex>`}networkTemplate(){let e=s.getAllRequestedCaipNetworks(),t=s.checkIfSmartAccountEnabled(),r=s.state.activeCaipNetwork,i=e.filter(e=>e?.chainNamespace===r?.chainNamespace);if(_(r?.chainNamespace)===u.ACCOUNT_TYPES.SMART_ACCOUNT&&t)return r?o`<wui-compatible-network
         @click=${this.onReceiveClick.bind(this)}
         text="Only receive assets on this network"
-        .networkImages=${[r.getNetworkImage(n)??``]}
-      ></wui-compatible-network>`:null;let a=((i?.filter(e=>e?.assets?.imageId))?.slice(0,5)).map(r.getNetworkImage).filter(Boolean);return o`<wui-compatible-network
+        .networkImages=${[n.getNetworkImage(r)??``]}
+      ></wui-compatible-network>`:null;let a=((i?.filter(e=>e?.assets?.imageId))?.slice(0,5)).map(n.getNetworkImage).filter(Boolean);return o`<wui-compatible-network
       @click=${this.onReceiveClick.bind(this)}
       text="Only receive assets on these networks"
       .networkImages=${a}
-    ></wui-compatible-network>`}onReceiveClick(){n.push(`WalletCompatibleNetworks`)}onCopyClick(){try{this.address&&(e.copyToClopboard(this.address),l.showSuccess(`Address copied`))}catch{l.showError(`Failed to copy`)}}};C.styles=x,S([u()],C.prototype,`address`,void 0),S([u()],C.prototype,`profileName`,void 0),S([u()],C.prototype,`network`,void 0),C=S([d(`w3m-wallet-receive-view`)],C);export{C as W3mWalletReceiveView};
+    ></wui-compatible-network>`}onReceiveClick(){r.push(`WalletCompatibleNetworks`)}onCopyClick(){try{this.address&&(t.copyToClopboard(this.address),f.showSuccess(`Address copied`))}catch{f.showError(`Failed to copy`)}}};C.styles=x,S([g()],C.prototype,`address`,void 0),S([g()],C.prototype,`profileName`,void 0),S([g()],C.prototype,`network`,void 0),C=S([i(`w3m-wallet-receive-view`)],C);export{C as W3mWalletReceiveView};
