@@ -1,4 +1,4 @@
-import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht as l,mr as u,or as d,qn as f,ri as p,rt as m,yi as h}from"./index-D20wyhr-.js";import"./index-BELkox9w-C4aCmCs3.js";var g=e`
+import{$t as e,Hn as t,Kn as n,Nt as r,X as i,dr as a,ei as o,et as s,gi as c,ir as l,kn as u,lr as d,m as f,mt as p,yi as m,zn as h}from"./index-veWgk10i.js";import"./index-D-SIiv9m-CtgXjrNs.js";var g=i`
   button {
     border: none;
     border-radius: ${({borderRadius:e})=>e[20]};
@@ -96,25 +96,25 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
   button:disabled {
     opacity: 0.5;
   }
-`,_=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},v={sm:`sm-regular`,md:`md-regular`,lg:`lg-regular`},y=class extends c{constructor(){super(...arguments),this.type=`accent`,this.size=`md`,this.imageSrc=``,this.disabled=!1,this.leftIcon=void 0,this.rightIcon=void 0,this.text=``}render(){return o`
+`,_=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},v={sm:`sm-regular`,md:`md-regular`,lg:`lg-regular`},y=class extends d{constructor(){super(...arguments),this.type=`accent`,this.size=`md`,this.imageSrc=``,this.disabled=!1,this.leftIcon=void 0,this.rightIcon=void 0,this.text=``}render(){return n`
       <button ?disabled=${this.disabled} data-type=${this.type} data-size=${this.size}>
-        ${this.imageSrc?o`<wui-image src=${this.imageSrc}></wui-image>`:null}
-        ${this.leftIcon?o`<wui-icon name=${this.leftIcon} color="inherit" size="inherit"></wui-icon>`:null}
+        ${this.imageSrc?n`<wui-image src=${this.imageSrc}></wui-image>`:null}
+        ${this.leftIcon?n`<wui-icon name=${this.leftIcon} color="inherit" size="inherit"></wui-icon>`:null}
         <wui-text variant=${v[this.size]} color="inherit">${this.text}</wui-text>
-        ${this.rightIcon?o`<wui-icon name=${this.rightIcon} color="inherit" size="inherit"></wui-icon>`:null}
+        ${this.rightIcon?n`<wui-icon name=${this.rightIcon} color="inherit" size="inherit"></wui-icon>`:null}
       </button>
-    `}};y.styles=[f,l,g],_([p()],y.prototype,`type`,void 0),_([p()],y.prototype,`size`,void 0),_([p()],y.prototype,`imageSrc`,void 0),_([p({type:Boolean})],y.prototype,`disabled`,void 0),_([p()],y.prototype,`leftIcon`,void 0),_([p()],y.prototype,`rightIcon`,void 0),_([p()],y.prototype,`text`,void 0),y=_([a(`wui-chip-button`)],y);var b=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},x=class extends c{constructor(){super(...arguments),this.maxDecimals=void 0,this.maxIntegers=void 0}render(){return o`
+    `}};y.styles=[t,p,g],_([o()],y.prototype,`type`,void 0),_([o()],y.prototype,`size`,void 0),_([o()],y.prototype,`imageSrc`,void 0),_([o({type:Boolean})],y.prototype,`disabled`,void 0),_([o()],y.prototype,`leftIcon`,void 0),_([o()],y.prototype,`rightIcon`,void 0),_([o()],y.prototype,`text`,void 0),y=_([m(`wui-chip-button`)],y);var b=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},x=class extends d{constructor(){super(...arguments),this.maxDecimals=void 0,this.maxIntegers=void 0}render(){return n`
       <wui-flex alignItems="center" gap="1">
         <wui-input-amount
           widthVariant="fit"
           fontSize="h2"
-          .maxDecimals=${d(this.maxDecimals)}
-          .maxIntegers=${d(this.maxIntegers)}
+          .maxDecimals=${l(this.maxDecimals)}
+          .maxIntegers=${l(this.maxIntegers)}
           .value=${this.amount?String(this.amount):``}
         ></wui-input-amount>
         <wui-text variant="md-regular" color="secondary">USD</wui-text>
       </wui-flex>
-    `}};b([p({type:Number})],x.prototype,`amount`,void 0),b([p({type:Number})],x.prototype,`maxDecimals`,void 0),b([p({type:Number})],x.prototype,`maxIntegers`,void 0),x=b([a(`w3m-fund-input`)],x);var S=e`
+    `}};b([o({type:Number})],x.prototype,`amount`,void 0),b([o({type:Number})],x.prototype,`maxDecimals`,void 0),b([o({type:Number})],x.prototype,`maxIntegers`,void 0),x=b([m(`w3m-fund-input`)],x);var S=i`
   .amount-input-container {
     border-radius: ${({borderRadius:e})=>e[6]};
     border-top-right-radius: 0;
@@ -126,11 +126,11 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
   .container {
     border-radius: 30px;
   }
-`,C=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},w=[10,50,100],T=6,E=10,D=class extends c{constructor(){super(),this.unsubscribe=[],this.network=s.state.activeCaipNetwork,this.exchanges=t.state.exchanges,this.isLoading=t.state.isLoading,this.amount=t.state.amount,this.tokenAmount=t.state.tokenAmount,this.priceLoading=t.state.priceLoading,this.isPaymentInProgress=t.state.isPaymentInProgress,this.currentPayment=t.state.currentPayment,this.paymentId=t.state.paymentId,this.paymentAsset=t.state.paymentAsset,this.unsubscribe.push(s.subscribeKey(`activeCaipNetwork`,e=>{this.network=e,this.setDefaultPaymentAsset()}),t.subscribe(e=>{var t,n;this.exchanges=e.exchanges,this.isLoading=e.isLoading,this.amount=e.amount,this.tokenAmount=e.tokenAmount,this.priceLoading=e.priceLoading,this.paymentId=e.paymentId,this.isPaymentInProgress=e.isPaymentInProgress,this.currentPayment=e.currentPayment,this.paymentAsset=e.paymentAsset,e.isPaymentInProgress&&(t=e.currentPayment)!=null&&t.exchangeId&&(n=e.currentPayment)!=null&&n.sessionId&&e.paymentId&&this.handlePaymentInProgress()}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e()),t.state.isPaymentInProgress||t.reset()}async firstUpdated(){await this.getPaymentAssets(),this.paymentAsset||await this.setDefaultPaymentAsset(),t.setAmount(w[0]),await t.fetchExchanges()}render(){return o`
+`,C=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},w=[10,50,100],T=6,E=10,D=class extends d{constructor(){super(),this.unsubscribe=[],this.network=f.state.activeCaipNetwork,this.exchanges=e.state.exchanges,this.isLoading=e.state.isLoading,this.amount=e.state.amount,this.tokenAmount=e.state.tokenAmount,this.priceLoading=e.state.priceLoading,this.isPaymentInProgress=e.state.isPaymentInProgress,this.currentPayment=e.state.currentPayment,this.paymentId=e.state.paymentId,this.paymentAsset=e.state.paymentAsset,this.unsubscribe.push(f.subscribeKey(`activeCaipNetwork`,e=>{this.network=e,this.setDefaultPaymentAsset()}),e.subscribe(e=>{var t,n;this.exchanges=e.exchanges,this.isLoading=e.isLoading,this.amount=e.amount,this.tokenAmount=e.tokenAmount,this.priceLoading=e.priceLoading,this.paymentId=e.paymentId,this.isPaymentInProgress=e.isPaymentInProgress,this.currentPayment=e.currentPayment,this.paymentAsset=e.paymentAsset,e.isPaymentInProgress&&(t=e.currentPayment)!=null&&t.exchangeId&&(n=e.currentPayment)!=null&&n.sessionId&&e.paymentId&&this.handlePaymentInProgress()}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e()),e.state.isPaymentInProgress||e.reset()}async firstUpdated(){await this.getPaymentAssets(),this.paymentAsset||await this.setDefaultPaymentAsset(),e.setAmount(w[0]),await e.fetchExchanges()}render(){return n`
       <wui-flex flexDirection="column" class="container">
         ${this.amountInputTemplate()} ${this.exchangesTemplate()}
       </wui-flex>
-    `}exchangesLoadingTemplate(){return Array.from({length:2}).map(()=>o`<wui-shimmer width="100%" height="65px" borderRadius="xxs"></wui-shimmer>`)}_exchangesTemplate(){return this.exchanges.length>0?this.exchanges.map(e=>o`<wui-list-item
+    `}exchangesLoadingTemplate(){return Array.from({length:2}).map(()=>n`<wui-shimmer width="100%" height="65px" borderRadius="xxs"></wui-shimmer>`)}_exchangesTemplate(){return this.exchanges.length>0?this.exchanges.map(e=>n`<wui-list-item
               @click=${()=>this.onExchangeClick(e)}
               chevron
               variant="image"
@@ -140,18 +140,18 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
               <wui-text variant="md-regular" color="primary">
                 Deposit from ${e.name}
               </wui-text>
-            </wui-list-item>`):o`<wui-flex flexDirection="column" alignItems="center" gap="4" padding="4">
+            </wui-list-item>`):n`<wui-flex flexDirection="column" alignItems="center" gap="4" padding="4">
           <wui-text variant="lg-medium" align="center" color="primary">
             No exchanges support this asset on this network
           </wui-text>
-        </wui-flex>`}exchangesTemplate(){return o`<wui-flex
+        </wui-flex>`}exchangesTemplate(){return n`<wui-flex
       flexDirection="column"
       gap="2"
       .padding=${[`3`,`3`,`3`,`3`]}
       class="exchanges-container"
     >
       ${this.isLoading?this.exchangesLoadingTemplate():this._exchangesTemplate()}
-    </wui-flex>`}amountInputTemplate(){return o`
+    </wui-flex>`}amountInputTemplate(){return n`
       <wui-flex
         flexDirection="column"
         .padding=${[`0`,`3`,`3`,`3`]}
@@ -168,9 +168,9 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
             flexDirection="row-reverse"
             text=${this.paymentAsset?.metadata.symbol||``}
             imageSrc=${this.paymentAsset?.metadata.iconUrl||``}
-            @click=${()=>i.push(`PayWithExchangeSelectAsset`)}
+            @click=${()=>h.push(`PayWithExchangeSelectAsset`)}
             size="lg"
-            .chainImageSrc=${d(r.getNetworkImage(this.network))}
+            .chainImageSrc=${l(r.getNetworkImage(this.network))}
           >
           </wui-token-button>
         </wui-flex>
@@ -190,24 +190,24 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
           ${this.tokenAmountTemplate()}
         </wui-flex>
         <wui-flex justifyContent="center" gap="2">
-          ${w.map(e=>o`<wui-chip-button
-                @click=${()=>t.setAmount(e)}
+          ${w.map(t=>n`<wui-chip-button
+                @click=${()=>e.setAmount(t)}
                 type="neutral"
                 size="lg"
-                text=${`$${e}`}
+                text=${`$${t}`}
               ></wui-chip-button>`)}
         </wui-flex>
       </wui-flex>
-    `}tokenAmountTemplate(){return this.priceLoading?o`<wui-shimmer
+    `}tokenAmountTemplate(){return this.priceLoading?n`<wui-shimmer
         width="65px"
         height="20px"
         borderRadius="xxs"
         variant="light"
-      ></wui-shimmer>`:o`
+      ></wui-shimmer>`:n`
       <wui-text variant="md-regular" color="secondary">
         ${this.tokenAmount.toFixed(4)} ${this.paymentAsset?.metadata.symbol}
       </wui-text>
-    `}async onExchangeClick(e){if(!this.amount){u.showError(`Please enter an amount`);return}await t.handlePayWithExchange(e.id)}handlePaymentInProgress(){var e,n;let r=s.state.activeChain,{redirectView:a=`Account`}=i.state.data??{};this.isPaymentInProgress&&(e=this.currentPayment)!=null&&e.exchangeId&&(n=this.currentPayment)!=null&&n.sessionId&&this.paymentId&&(t.waitUntilComplete({exchangeId:this.currentPayment.exchangeId,sessionId:this.currentPayment.sessionId,paymentId:this.paymentId}).then(e=>{e.status===`SUCCESS`?(u.showSuccess(`Deposit completed`),t.reset(),r&&(s.fetchTokenBalance(),h.updateBalance(r)),i.replace(`Transactions`)):e.status===`FAILED`&&u.showError(`Deposit failed`)}),u.showLoading(`Deposit in progress...`),i.replace(a))}onAmountChange({detail:e}){t.setAmount(e?Number(e):null)}async getPaymentAssets(){this.network&&await t.getAssetsForNetwork(this.network.caipNetworkId)}async setDefaultPaymentAsset(){if(this.network){let e=await t.getAssetsForNetwork(this.network.caipNetworkId);e[0]&&t.setPaymentAsset(e[0])}}};D.styles=S,C([m()],D.prototype,`network`,void 0),C([m()],D.prototype,`exchanges`,void 0),C([m()],D.prototype,`isLoading`,void 0),C([m()],D.prototype,`amount`,void 0),C([m()],D.prototype,`tokenAmount`,void 0),C([m()],D.prototype,`priceLoading`,void 0),C([m()],D.prototype,`isPaymentInProgress`,void 0),C([m()],D.prototype,`currentPayment`,void 0),C([m()],D.prototype,`paymentId`,void 0),C([m()],D.prototype,`paymentAsset`,void 0),D=C([a(`w3m-deposit-from-exchange-view`)],D);var O=e`
+    `}async onExchangeClick(t){if(!this.amount){a.showError(`Please enter an amount`);return}await e.handlePayWithExchange(t.id)}handlePaymentInProgress(){var t,n;let r=f.state.activeChain,{redirectView:i=`Account`}=h.state.data??{};this.isPaymentInProgress&&(t=this.currentPayment)!=null&&t.exchangeId&&(n=this.currentPayment)!=null&&n.sessionId&&this.paymentId&&(e.waitUntilComplete({exchangeId:this.currentPayment.exchangeId,sessionId:this.currentPayment.sessionId,paymentId:this.paymentId}).then(t=>{t.status===`SUCCESS`?(a.showSuccess(`Deposit completed`),e.reset(),r&&(f.fetchTokenBalance(),c.updateBalance(r)),h.replace(`Transactions`)):t.status===`FAILED`&&a.showError(`Deposit failed`)}),a.showLoading(`Deposit in progress...`),h.replace(i))}onAmountChange({detail:t}){e.setAmount(t?Number(t):null)}async getPaymentAssets(){this.network&&await e.getAssetsForNetwork(this.network.caipNetworkId)}async setDefaultPaymentAsset(){if(this.network){let t=await e.getAssetsForNetwork(this.network.caipNetworkId);t[0]&&e.setPaymentAsset(t[0])}}};D.styles=S,C([s()],D.prototype,`network`,void 0),C([s()],D.prototype,`exchanges`,void 0),C([s()],D.prototype,`isLoading`,void 0),C([s()],D.prototype,`amount`,void 0),C([s()],D.prototype,`tokenAmount`,void 0),C([s()],D.prototype,`priceLoading`,void 0),C([s()],D.prototype,`isPaymentInProgress`,void 0),C([s()],D.prototype,`currentPayment`,void 0),C([s()],D.prototype,`paymentId`,void 0),C([s()],D.prototype,`paymentAsset`,void 0),D=C([m(`w3m-deposit-from-exchange-view`)],D);var O=i`
   .contentContainer {
     height: 440px;
     overflow: scroll;
@@ -223,11 +223,11 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
     height: 40px;
     border-radius: ${({borderRadius:e})=>e[3]};
   }
-`,k=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},A=class extends c{constructor(){super(),this.unsubscribe=[],this.assets=t.state.assets,this.search=``,this.onDebouncedSearch=n.debounce(e=>{this.search=e}),this.unsubscribe.push(t.subscribe(e=>{this.assets=e.assets}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e())}render(){return o`
+`,k=function(e,t,n,r){var i=arguments.length,a=i<3?t:r===null?r=Object.getOwnPropertyDescriptor(t,n):r,o;if(typeof Reflect==`object`&&typeof Reflect.decorate==`function`)a=Reflect.decorate(e,t,n,r);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(a=(i<3?o(a):i>3?o(t,n,a):o(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},A=class extends d{constructor(){super(),this.unsubscribe=[],this.assets=e.state.assets,this.search=``,this.onDebouncedSearch=u.debounce(e=>{this.search=e}),this.unsubscribe.push(e.subscribe(e=>{this.assets=e.assets}))}disconnectedCallback(){this.unsubscribe.forEach(e=>e())}render(){return n`
       <wui-flex flexDirection="column">
         ${this.templateSearchInput()} <wui-separator></wui-separator> ${this.templateTokens()}
       </wui-flex>
-    `}templateSearchInput(){return o`
+    `}templateSearchInput(){return n`
       <wui-flex gap="2" padding="3">
         <wui-input-text
           @inputChange=${this.onInputChange.bind(this)}
@@ -237,7 +237,7 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
           icon="search"
         ></wui-input-text>
       </wui-flex>
-    `}templateTokens(){let e=this.assets.filter(e=>e.metadata.name.toLowerCase().includes(this.search.toLowerCase()));return o`
+    `}templateTokens(){let e=this.assets.filter(e=>e.metadata.name.toLowerCase().includes(this.search.toLowerCase()));return n`
       <wui-flex
         class="contentContainer"
         flexDirection="column"
@@ -247,7 +247,7 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
           <wui-text variant="md-medium" color="secondary">Available tokens</wui-text>
         </wui-flex>
         <wui-flex flexDirection="column" gap="2">
-          ${e.length>0?e.map(e=>o`<wui-list-item
+          ${e.length>0?e.map(e=>n`<wui-list-item
                     .imageSrc=${e.metadata.iconUrl}
                     ?clickable=${!0}
                     @click=${this.handleTokenClick.bind(this,e)}
@@ -256,7 +256,7 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
                     <wui-text variant="md-regular" color="secondary"
                       >${e.metadata.symbol}</wui-text
                     >
-                  </wui-list-item>`):o`<wui-flex
+                  </wui-list-item>`):n`<wui-flex
                 .padding=${[`20`,`0`,`0`,`0`]}
                 alignItems="center"
                 flexDirection="column"
@@ -277,4 +277,4 @@ import{$ as e,$t as t,An as n,Ft as r,Hn as i,Si as a,Zn as o,_ as s,fr as c,ht 
               </wui-flex>`}
         </wui-flex>
       </wui-flex>
-    `}onBuyClick(){i.push(`OnRampProviders`)}onInputChange(e){this.onDebouncedSearch(e.detail)}handleTokenClick(e){t.setPaymentAsset(e),i.goBack()}};A.styles=O,k([m()],A.prototype,`assets`,void 0),k([m()],A.prototype,`search`,void 0),A=k([a(`w3m-deposit-from-exchange-select-asset-view`)],A);export{A as W3mDepositFromExchangeSelectAssetView,D as W3mDepositFromExchangeView};
+    `}onBuyClick(){h.push(`OnRampProviders`)}onInputChange(e){this.onDebouncedSearch(e.detail)}handleTokenClick(t){e.setPaymentAsset(t),h.goBack()}};A.styles=O,k([s()],A.prototype,`assets`,void 0),k([s()],A.prototype,`search`,void 0),A=k([m(`w3m-deposit-from-exchange-select-asset-view`)],A);export{A as W3mDepositFromExchangeSelectAssetView,D as W3mDepositFromExchangeView};
