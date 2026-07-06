@@ -392,6 +392,7 @@ export const Create2FaEntry = ({ onData, value }) => {
                     await generate({ secret: secretKey })
                     setSecretKeyError(false)
                 } catch (e) {
+                    console.log(e)
                     setSecretKeyError(true)
                 }
             }, 100)
