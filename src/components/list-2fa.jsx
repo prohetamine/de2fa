@@ -3,6 +3,7 @@ import useWindowSize from '@rooks/use-window-size'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import * as OTPAuth from 'otpauth'
 import { generate } from 'otplib'
 import ContentLoader from 'react-content-loader'
 import copy from 'copy-to-clipboard'
@@ -35,7 +36,11 @@ const Item = ({ data, onEditProfile, onEdit, onDelete, onEdit2fa, isEdit2fa, isV
     if (data.secret) {
       const intervalId = setInterval(async () => {
         try {
-          const token = await generate({ secret: data.secret })
+          const totp = new OTPAuth.TOTP({
+              secret: OTPAuth.Secret.fromBase32(data.secret),
+          })
+
+          const token = totp.generate()
               , remaining = 30 - (Math.floor(Date.now() / 1000) % 30)
 
           setCode(token)  

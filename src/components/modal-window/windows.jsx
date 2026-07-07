@@ -389,7 +389,9 @@ export const Create2FaEntry = ({ onData, value }) => {
         if (secretKey) {
             const timeId = setTimeout(async () => {
                 try {
-                    await generate({ secret: secretKey })
+                    new OTPAuth.TOTP({
+                        secret: OTPAuth.Secret.fromBase32(secretKey),
+                    })
                     setSecretKeyError(false)
                 } catch (e) {
                     console.log(e)
@@ -430,7 +432,7 @@ export const Create2FaEntry = ({ onData, value }) => {
                                 onScan={detectedCodes => {
                                     const [data = false] = detectedCodes.map(code => {
                                         try {
-                                            const { issuer = '', label = '' } = OTPAuth.URI.parse(`otpauth://totp/Reddit:Adventurous_Dot1008?issuer=Reddit&secret=NH4TZSFEMC3JH7FM6VLJSUO6COATK5KB`)
+                                            const { issuer = '', label = '' } = OTPAuth.URI.parse(code.rawValue)
                                                 , url = new URL(code.rawValue)
                                                 , secret = url.searchParams.get('secret')
                                             
@@ -564,7 +566,9 @@ export const Create2FaEntry = ({ onData, value }) => {
                                     }
 
                                     try {
-                                        await generate({ secret: secretKey })
+                                        new OTPAuth.TOTP({
+                                            secret: OTPAuth.Secret.fromBase32(secretKey),
+                                        })
                                     } catch (e) {
                                         setSecretKeyError(true)
                                         return
@@ -612,7 +616,9 @@ export const Edit2FaEntry = ({ onData, value }) => {
         if (secretKey) {
             const timeId = setTimeout(async () => {
                 try {
-                    await generate({ secret: secretKey })
+                    new OTPAuth.TOTP({
+                        secret: OTPAuth.Secret.fromBase32(secretKey)
+                    })
                     setSecretKeyError(false)
                 } catch (e) {
                     setSecretKeyError(true)
@@ -652,7 +658,7 @@ export const Edit2FaEntry = ({ onData, value }) => {
                                 onScan={detectedCodes => {
                                     const [data = false] = detectedCodes.map(code => {
                                         try {
-                                            const { issuer = '', label = '' } = OTPAuth.URI.parse(`otpauth://totp/Reddit:Adventurous_Dot1008?issuer=Reddit&secret=NH4TZSFEMC3JH7FM6VLJSUO6COATK5KB`)
+                                            const { issuer = '', label = '' } = OTPAuth.URI.parse(code.rawValue)
                                                 , url = new URL(code.rawValue)
                                                 , secret = url.searchParams.get('secret')
                                             
@@ -786,7 +792,9 @@ export const Edit2FaEntry = ({ onData, value }) => {
                                     }
 
                                     try {
-                                        await generate({ secret: secretKey })
+                                        new OTPAuth.TOTP({
+                                            secret: OTPAuth.Secret.fromBase32(secretKey)
+                                        })
                                     } catch (e) {
                                         setSecretKeyError(true)
                                         return
